@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- CSS読込 -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- JS読込 -->
+    <script defer th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+    <title>ホーム画面</title>
+</head>
+<body class="bg-light">
+<div class="text-center">
+    <h1>ホーム画面</h1>
+    <h2 class="main">member</h2>
+    <a class="btn btn-primary" th:href="@{/member/new}">登録</a>
+    <a class="btn btn-primary" th:href="@{/member/list}">一覧</a>
+
+    <h2 class="main">company</h2>
+    <a class="btn btn-primary" th:href="@{/company/new}">登録</a>
+    <a class="btn btn-primary" th:href="@{/company/list}">一覧</a>
+
+    <h2 class="main">project</h2>
+    <a class="btn btn-primary" th:href="@{/project/new}">登録</a>
+    <a class="btn btn-primary" th:href="@{/project/list}">一覧</a>
+</div>
+</body>
+</html>

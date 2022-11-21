@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS読込 -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <title>メンバー新規登録画面</title>
+</head>
+<body class="bg-light">
+<div class="header">Header領域</div>
+<form id="signup-form" method="post" action="/member/new" class="form-signup" th:object="${newMemberForm}">
+    <h1 class="main">メンバー新規登録画面</h1>
+
+    <!-- 氏名 -->
+    <div class="form-group">
+        <label for="memberName">氏名</label>
+        <input type="text" class="form-control" th:field="*{memberName}"/>
+    </div>
+
+    <!-- ランク -->
+    <div class="form-group">
+        <label for="memberRank">ランク</label>
+        <select class="form-check-input"
+                th:field="*{memberRank}">
+            <option value="">選択してください</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+        </select>
+    </div>
+
+    <!-- 所属会社 -->
+    <div class="form-group">
+        <label for="companyId">所属会社</label>
+            <select class="form-check-input"
+                   th:field="*{companyId}">
+            <option value="">選択してください</option>
+            <option value="1">XXX株式会社</option>
+            <option value="2">YYY.Inc</option>
+            <option value="3">ZZZグループ</option>
+            </select>
+        </div>
+    </div>
+    <!-- 登録ボタン -->
+    <input type="submit" value="登録"
+           class="btn btn-primary w-100 mt-3" />
+    <div class="footer">
+        <span>Footer領域</span>
+        <a th:href="@{/home}">ホーム画面</a>
+    </div>
+</form>
+</body>
+</html>
