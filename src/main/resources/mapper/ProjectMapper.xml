@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.kadai.repository.ProjectMapper">
+
+    <!-- マッピング定義(ユーザー) -->
+    <resultMap type="com.example.kadai.model.Member" id="member">
+        <id column="member_id" property="memberId" />
+        <result column="member_name" property="memberName" />
+        <result column="member_rank" property="memberRank" />
+        <result column="company_id" property="companyId" />
+        <association property="company" resultMap="company"/>
+        <!--        <collection property="salaryList" resultMap="salary" columnPrefix="salary_"/>-->
+    </resultMap>
+
+    <!-- マッピング定義(会社) -->
+    <resultMap type="com.example.kadai.model.Company" id="company">
+        <id column="company_id" property="companyId" />
+        <result column="company_name" property="companyName" />
+        <result column="company_alias" property="companyAlias" />
+    </resultMap>
+
+        <!-- マッピング定義(プロジェクト) -->
+        <resultMap type="com.example.kadai.model.Project" id="project">
+            <id column="project_id" property="projectId" />
+            <result column="project_name" property="projectName" />
+            <result column="period_from" property="periodFrom" />
+            <result column="period_to" property="periodTo" />
+        </resultMap>
+</mapper>

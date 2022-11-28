@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>ユーザー詳細</title>
+    <!-- CSS読込 -->
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+    <!-- JS読込 -->
+    <script th:src="@{/js/member/detail.js}" defer></script>
 </head>
 <body>
+<div layout:fragment="content">
+    <div class="header border-bottom">
+        <h1 class="h2">メンバー更新画面</h1>
+    </div>
+    <form id="member-detail-form"
+          method="post"
+          th:action="@{/member/detail}"
+          class="form-signup"
+          th:object="${memberDetailForm}">
+        <input type="hidden" th:field="*{memberId}" />
+        <!-- ユーザー詳細情報 -->
+        <table class="table table-striped table-bordered table-hover">
+            <tbody>
+            <tr>
+                <th class="w-25">メンバーID</th>
+                <td th:text="*{memberId}"></td>
+            </tr>
+            <tr>
+                <th>氏名</th>
+                <td>
+                    <input type="text" class="form-control" th:field="*{memberName}"/>
+                </td>
+            </tr>
+            <tr>
+                <th>ランク</th>
+                <td>
+                    <select class="form-control"
+                            th:field="*{memberRank}">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>所属会社</th>
+                <td>
+                    <select class="form-control"
+                            th:field="*{companyId}">
+                        <option
+                                th:each="company : ${companyList}"
+                                th:value="${company.companyId}"
+                                th:text="${company.companyName}"
+                                th:selected="${company.companyId == selectedValue}">
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- RESTボタンエリア -->
+        <div class="text-center mt-2">
+            <!-- 削除ボタン -->
+            <button id="btn-delete" class="btn btn-danger" type="button">
+                削除(REST)
+            </button>
+            <!-- 更新ボタン -->
+            <button id="btn-update" class="btn btn-primary" type="button">
+                更新(REST)
+            </button>
+        </div>
 
+    </form>
+</div>
 </body>
 </html>

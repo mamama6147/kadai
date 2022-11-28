@@ -45,14 +45,13 @@ dependencies {
 	implementation("org.aspectj:aspectjweaver")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	runtimeOnly("com.h2database:h2")
 	implementation("org.webjars:jquery:3.6.1")
 	implementation("org.webjars:bootstrap:5.2.2")
 	implementation("org.webjars:webjars-locator:0.45")
 	implementation("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
-	implementation("org.webjars:datatables:1.12.1")
-	implementation("org.webjars:datatables-plugins:1.11.4")
+	implementation("org.webjars:datatables:1.10.21")
+	runtimeOnly("org.webjars:datatables-plugins:1.10.21")
 }
 
 tasks.withType<KotlinCompile> {

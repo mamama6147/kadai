@@ -3,9 +3,13 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}">
 <head>
-    <title>ユーザー一覧</title>
+    <title>メンバー一覧</title>
     <!-- 個別CSS読込 -->
-    <link rel="stylesheet" th:href="@{/css/user/list.css}">
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+    <!-- 個別JS読込 -->
+    <link rel="stylesheet" th:href="@{/webjars/datatables/css/jquery.dataTables.min.css}">
+    <script th:src="@{/webjars/datatables/js/jquery.dataTables.min.js}" defer></script>
+    <script th:src="@{/js/member/list.js}" defer></script>
 </head>
 <body>
 <div layout:fragment="content">
@@ -20,6 +24,8 @@
                 <th class="th-width">メンバーID</th>
                 <th class="th-width">氏名</th>
                 <th class="th-width">ランク</th>
+                <th class="th-width">所属会社</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +33,12 @@
                 <td th:text="${item.memberId}"></td>
                 <td th:text="${item.memberName}"></td>
                 <td th:text="${item.memberRank}"></td>
+                <td th:text="${item.company.companyName}"></td>
+                <td>
+                    <a class="btn btn-primary" th:href="@{'/member/' + ${item.memberId}}">
+                        詳細
+                    </a>
+                </td>
             </tr>
             </tbody>
         </table>

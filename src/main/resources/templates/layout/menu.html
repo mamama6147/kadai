@@ -8,8 +8,27 @@
 <div layout:fragment="menu" class="bg-light">
     <ul class="nav nav-pills nav-stacked">
         <li role="presentation">
+            <a class="nav-link" th:href="@{'/member/new'}">メンバー登録</a>
+        </li>
+        <li role="presentation">
             <a class="nav-link" th:href="@{'/member/list'}">メンバー一覧</a>
         </li>
+        <li role="presentation">
+            <a class="nav-link" th:href="@{'/member/search'}">メンバー検索</a>
+        </li>
+        <li role="presentation">
+            <a class="nav-link" th:href="@{'/company/new'}">所属会社登録</a>
+        </li>
+        <li role="presentation">
+            <a class="nav-link" th:href="@{'/company/list'}">所属会社一覧</a>
+        </li>
+        <li role="presentation">
+            <a class="nav-link" th:href="@{'/project/new'}">プロジェクト登録</a>
+        </li>
+        <li role="presentation">
+            <a class="nav-link" th:href="@{'/project/list'}">プロジェクト一覧</a>
+        </li>
+
     </ul>
 </div>
 </body>

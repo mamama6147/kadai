@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.kadai.repository.CompanyMapper">
+
+    <!-- マッピング定義(ユーザー) -->
+    <resultMap type="com.example.kadai.model.Member" id="member">
+        <id column="member_id" property="memberId" />
+        <result column="member_name" property="memberName" />
+        <result column="member_rank" property="memberRank" />
+        <result column="company_id" property="companyId" />
+        <association property="company" resultMap="company"/>
+        <!--        <collection property="salaryList" resultMap="salary" columnPrefix="salary_"/>-->
+    </resultMap>
+
+    <!-- マッピング定義(会社) -->
+    <resultMap type="com.example.kadai.model.Company" id="company">
+        <id column="company_id" property="companyId" />
+        <result column="company_name" property="companyName" />
+        <result column="company_alias" property="companyAlias" />
+    </resultMap>
+
+    <!--    &lt;!&ndash; マッピング定義(給料) &ndash;&gt;-->
+    <!--    <resultMap type="com.example.demo1.domain.user.model.Salary" id="salary">-->
+    <!--        <id column="user_id" property="userId" />-->
+    <!--        <id column="year_month" property="yearMonth" />-->
+    <!--        <result column="salary" property="salary" />-->
+    <!--    </resultMap>-->
+</mapper>

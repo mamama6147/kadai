@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS読込 -->
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <!-- JS読込 -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/company/insert.js}" defer></script>
+    <title th:text="所属会社新規登録"></title>
+
+    <title>所属会社新規登録</title>
 </head>
 <body>
+<div layout:fragment="content">
+    <div class="header border-bottom">
+        <h1 class="h2">所属会社新規登録画面</h1>
+    </div>
 
+    <form id="signup-form" method="post"
+          action="/company/new"
+          class="form-signup"
+          th:object="${newCompanyForm}">
+
+        <!-- 氏名 -->
+        <div class="form-group">
+            <label for="memberName">会社名</label>
+            <input type="text" class="form-control" th:field="*{companyName}"/>
+        </div>
+        <!-- 氏名 -->
+        <div class="form-group">
+            <label for="memberName">略称</label>
+            <input type="text" class="form-control" th:field="*{companyAlias}"/>
+        </div>
+        <!-- 登録ボタン -->
+        <button id="btn-insert" type="button" class="btn btn-primary w-100 mt-3">
+            登録
+        </button>
+    </form>
+</div>
 </body>
 </html>

@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- CSS読込 -->
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <!-- JS読込 -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+    <script th:src="@{/js/member/insert.js}" defer></script>
+    <title th:text="メンバー新規登録画面"></title>
 
     <title>メンバー新規登録画面</title>
 </head>
-<body class="bg-light">
-<div class="header">Header領域</div>
-<form id="signup-form" method="post" action="/member/new" class="form-signup" th:object="${newMemberForm}">
-    <h1 class="main">メンバー新規登録画面</h1>
+<body>
+<div layout:fragment="content">
+    <div class="header border-bottom">
+        <h1 class="h2">メンバー新規登録画面</h1>
+    </div>
+
+<form id="signup-form" method="post"
+      action="/member/new"
+      class="form-signup"
+      th:object="${newMemberForm}">
 
     <!-- 氏名 -->
     <div class="form-group">
@@ -20,35 +34,36 @@
     </div>
 
     <!-- ランク -->
-    <div class="form-group">
+    <div class="dropdown">
         <label for="memberRank">ランク</label>
-        <select class="form-check-input"
+        <select class="form-control"
                 th:field="*{memberRank}">
             <option value="">選択してください</option>
-            <option value="1">A</option>
-            <option value="2">B</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
         </select>
     </div>
 
     <!-- 所属会社 -->
     <div class="form-group">
         <label for="companyId">所属会社</label>
-            <select class="form-check-input"
+            <select class="form-control"
                    th:field="*{companyId}">
             <option value="">選択してください</option>
-            <option value="1">XXX株式会社</option>
-            <option value="2">YYY.Inc</option>
-            <option value="3">ZZZグループ</option>
+            <option
+                    th:each="company : ${companyList}"
+                    th:value="${company.companyId}"
+                    th:text="${company.companyName}"
+                    th:selected="${company.companyId == selectedValue}">
+            </option>
             </select>
-        </div>
+
     </div>
     <!-- 登録ボタン -->
-    <input type="submit" value="登録"
-           class="btn btn-primary w-100 mt-3" />
-    <div class="footer">
-        <span>Footer領域</span>
-        <a th:href="@{/home}">ホーム画面</a>
-    </div>
+    <button id="btn-insert" type="button" class="btn btn-primary w-100 mt-3">
+        ユーザー登録(REST)
+    </button>
 </form>
+</div>
 </body>
 </html>
