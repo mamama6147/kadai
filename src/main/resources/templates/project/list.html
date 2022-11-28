@@ -30,7 +30,7 @@
             <tr th:each="item: ${projectList}">
                 <td th:text="${item.projectId}"></td>
                 <td th:text="${item.projectName}"></td>
-                <td th:text="${#dates.format(item.periodFrom, 'YYYY/MM/dd')}+ '〜' +${#dates.format(item.periodTo, 'YYYY/MM/dd')}"></td>
+                <td th:text="${#dates.format(item.periodFrom, 'YYYY/MM/dd')}+ '〜' +${#dates.format(item.periodTo, 'MM/dd')}"></td>
                 <td>
                     <a class="btn btn-primary" th:href="@{'/project/' + ${item.projectId}}">
                         詳細
