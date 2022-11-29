@@ -22,10 +22,11 @@
         <result column="company_alias" property="companyAlias" />
     </resultMap>
 
-<!--    &lt;!&ndash; マッピング定義(給料) &ndash;&gt;-->
-<!--    <resultMap type="com.example.demo1.domain.user.model.Salary" id="salary">-->
-<!--        <id column="user_id" property="userId" />-->
-<!--        <id column="year_month" property="yearMonth" />-->
-<!--        <result column="salary" property="salary" />-->
-<!--    </resultMap>-->
+    <!-- マッピング定義(プロジェクト) -->
+    <resultMap type="com.example.kadai.model.Project" id="project">
+        <id column="project_id" property="projectId" />
+        <result column="project_name" property="projectName" />
+        <result column="period_from" property="periodFrom" />
+        <result column="period_to" property="periodTo" />
+    </resultMap>
 </mapper>

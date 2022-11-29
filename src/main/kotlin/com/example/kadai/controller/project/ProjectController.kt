@@ -6,7 +6,9 @@ import com.example.kadai.form.company.NewCompanyForm
 import com.example.kadai.form.member.MemberDetailForm
 import com.example.kadai.form.project.NewProjectForm
 import com.example.kadai.form.project.ProjectDetailForm
+import com.example.kadai.model.Member
 import com.example.kadai.service.CompanyService
+import com.example.kadai.service.MemberService
 import com.example.kadai.service.ProjectService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -25,23 +27,23 @@ class ProjectController(
     companion object {
         private val log by KtLog()
     }
-    /** 会社登録画面を表示  */
+    /** プロジェクト登録画面を表示  */
     @GetMapping("/new")
     fun getSignup(
         model: Model,
         locale: Locale,
         @ModelAttribute("newProjectForm") form: NewProjectForm
     ): String {
-        // 会社登録画面に遷移
+        // プロジェクト登録画面に遷移
         return "project/new"
     }
 
-    /** 所属会社一覧画面を表示 **/
+    /** プロジェクト一覧画面を表示 **/
     @GetMapping("/list")
     fun getProjectList(
         model: Model): String {
 
-        //ユーザー検索
+        //プロジェクト検索
         val projectList = projectService.getProjects()
 
         // Modelに登録
@@ -50,17 +52,17 @@ class ProjectController(
         return "project/list"
     }
 
-    /** ユーザー詳細画面を表示  */
+    /** プロジェクト詳細画面を表示  */
     @GetMapping("/{projectId:.+}")
     fun getUser(
         form: ProjectDetailForm,
         model: Model,
         @PathVariable("projectId") projectId: Int
     ): String{
-        // ユーザーを1件取得
+        // プロジェクトを1件取得
         val project = projectService.getProjectOne(projectId)
 
-        // Memberをformに変換
+        // Projectをformに変換
         val form = ProjectDetailForm()
         form.projectId = project.projectId
         form.projectName = project.projectName
@@ -70,11 +72,8 @@ class ProjectController(
         // Modelに登録
         model.addAttribute("projectDetailForm", form)
 
-        // ユーザー詳細画面を表示
+        // プロジェクト詳細画面を表示
         return "project/detail"
     }
-
-
-
 
 }
